@@ -1,4 +1,4 @@
-package com.codurance.training.tasks;
+package com.Task;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -17,12 +17,6 @@ public final class TaskList implements Runnable {
     private final PrintWriter out;
 
     private long lastId = 0;
-
-    public static void main(String[] args) throws Exception {
-        BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
-        PrintWriter out = new PrintWriter(System.out);
-        new TaskList(in, out).run();
-    }
 
     public TaskList(BufferedReader reader, PrintWriter writer) {
         this.in = reader;
