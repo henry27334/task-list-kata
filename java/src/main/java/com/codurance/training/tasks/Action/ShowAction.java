@@ -7,12 +7,12 @@ import java.util.Map;
 import com.codurance.training.tasks.Project.Project;
 import com.codurance.training.tasks.Task.Task;
 
-public class show extends Action{
+public class ShowAction extends Action{
 
     @Override
     public void execute(PrintWriter out, String command) {
-        Project newProject = new Project();
-        Map<String, List<Task>> tasks = newProject.getProject();
+        Project pj = Project.getInstance();
+        Map<String, List<Task>> tasks = pj.getProject();
 
         for (Map.Entry<String, List<Task>> project : tasks.entrySet()) {
             out.println(project.getKey());

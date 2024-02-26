@@ -8,14 +8,21 @@ import com.codurance.training.tasks.Task.Task;
 
 public class Project {
 
-    private final Map<String, List<Task>> projects;
+    private static Project instance;
+    private final Map<String, List<Task>> tasks;
 
-    public Project() {
-        projects = new LinkedHashMap<>();
+    private Project() {
+        tasks = new LinkedHashMap<>();
     }
     
-    public Map<String, List<Task>> getProject() {
-        return projects;
-    }
+    public static Project getInstance() {
+        if (instance == null) {
+            instance = new Project();
+        }
+        return instance;
+    };
 
+    public Map<String, List<Task>> getProject() {
+        return tasks;
+    };
 }
