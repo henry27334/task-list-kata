@@ -2,7 +2,7 @@ package com.codurance.training.tasks.Action;
 
 import java.io.PrintWriter;
 
-public class ErrorAction extends Action {
+public class ErrorAction implements Action {
     @Override
     public void execute(PrintWriter out, String command) {
         //Default operation

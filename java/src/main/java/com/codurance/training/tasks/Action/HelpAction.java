@@ -2,7 +2,7 @@ package com.codurance.training.tasks.Action;
 
 import java.io.PrintWriter;
 
-public class HelpAction extends Action{
+public class HelpAction implements Action{
     @Override
     public void execute(PrintWriter out, String command) {
         out.println("Commands:");

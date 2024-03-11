@@ -7,7 +7,7 @@ import java.util.Map;
 import com.codurance.training.tasks.Project.Project;
 import com.codurance.training.tasks.Task.Task;
 
-public class ShowAction extends Action{
+public class ShowAction implements Action{
 
     @Override
     public void execute(PrintWriter out, String command) {

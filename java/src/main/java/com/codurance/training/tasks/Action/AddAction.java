@@ -8,7 +8,7 @@ import java.util.Map;
 import com.codurance.training.tasks.Project.Project;
 import com.codurance.training.tasks.Task.Task;
 
-public class AddAction extends Action{
+public class AddAction implements Action{
 
     Project pj = Project.getInstance();
     Map<String, List<Task>> tasks = pj.getProject();

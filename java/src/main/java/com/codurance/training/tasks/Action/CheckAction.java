@@ -7,7 +7,7 @@ import java.util.Map;
 import com.codurance.training.tasks.Project.Project;
 import com.codurance.training.tasks.Task.Task;
 
-public class CheckAction extends Action{
+public class CheckAction implements Action{
 
     Project pj = Project.getInstance();
     Map<String, List<Task>> tasks = pj.getProject();
