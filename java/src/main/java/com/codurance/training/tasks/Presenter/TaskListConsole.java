@@ -1,24 +1,30 @@
-package com.codurance.training.tasks.Task;
+package com.codurance.training.tasks.Presenter;
+
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
 
-import com.codurance.training.tasks.Action.Action;
-import com.codurance.training.tasks.Action.AddAction;
-import com.codurance.training.tasks.Action.CheckAction;
-import com.codurance.training.tasks.Action.ErrorAction;
-import com.codurance.training.tasks.Action.HelpAction;
-import com.codurance.training.tasks.Action.ShowAction;
-import com.codurance.training.tasks.Action.UncheckAction;
+import com.codurance.training.tasks.UseCase.Action.Action;
+import com.codurance.training.tasks.UseCase.Action.AddAction;
+import com.codurance.training.tasks.UseCase.Action.CheckAction;
+import com.codurance.training.tasks.UseCase.Action.ErrorAction;
+import com.codurance.training.tasks.UseCase.Action.HelpAction;
+import com.codurance.training.tasks.UseCase.Action.ShowAction;
+import com.codurance.training.tasks.UseCase.Action.UncheckAction;
+import com.codurance.training.tasks.UseCase.GetTask.GetTask;
 
-public final class TaskList implements Runnable {
+public final class TaskListConsole implements Runnable {
     private static final String QUIT = "quit";
 
     private final BufferedReader in;
     private final PrintWriter out;
+    private final Map<String, List<GetTask>> tasks = new LinkedHashMap<>();;
 
-    public TaskList(BufferedReader reader, PrintWriter writer) {
+    public TaskListConsole(BufferedReader reader, PrintWriter writer) {
         this.in = reader;
         this.out = writer;
     }
@@ -67,7 +73,7 @@ public final class TaskList implements Runnable {
 
         }
         
-        selectedAction.execute(out, commandLine);
+        selectedAction.execute(tasks, out, commandLine);
 
     }
 
