@@ -4,20 +4,16 @@ import java.io.PrintWriter;
 import java.util.List;
 import java.util.Map;
 
-import com.codurance.training.tasks.UseCase.GetTask.GetTask;
+import com.codurance.training.tasks.UseCase.GetTask.GetTaskImpl;
+import com.codurance.training.tasks.UseCase.ShowProject.ShowProject;
+import com.codurance.training.tasks.UseCase.ShowProject.ShowProjectImpl;
 
 public class ShowAction implements Action{
 
     @Override
-    public void execute(Map<String, List<GetTask>> tasks, PrintWriter out, String command) {
-
-        for (Map.Entry<String, List<GetTask>> project : tasks.entrySet()) {
-            out.println(project.getKey());
-            for (GetTask task : project.getValue()) {
-                out.printf("    [%c] %d: %s%n", (task.getTask().isDone() ? 'x' : ' '), task.getTask().getId(), task.getTask().getDescription());
-            }
-            out.println();
-        }        
+    public void execute(Map<String, List<GetTaskImpl>> tasks, PrintWriter out, String command) {
+        ShowProject showProject = new ShowProjectImpl(tasks, out);
+        showProject.showDetail();
     }
     
 }

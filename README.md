@@ -1,3 +1,12 @@
+# Homework2: Refactor
+1. 將程式碼分層為Entity, Use case, Controller及Presenter，並以資料夾封裝表示
+2. 將Task放置於Entity
+3. 將一系列操作行為轉換為Use case，並放置於UseCase
+4. 使用者操作的需求透過Controller進行操作
+5. 將Console(UI)從TaskList拆出來，並放置於Presenter
+6. 不讓外圈直接存取Entity，改為藉由Interface Adapter進行存取
+
+
 # Task List &nbsp; [![Build Status](https://travis-ci.org/codurance/task-list.png)](https://travis-ci.org/codurance/task-list)
 
 This is an example of code obsessed with primitives.
