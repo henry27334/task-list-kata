@@ -1,4 +1,4 @@
-package com.codurance.training.tasks.UseCase.Action;
+package com.codurance.training.tasks.Adapter.Controller;
 
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -10,7 +10,7 @@ import com.codurance.training.tasks.UseCase.AddProject.AddProjectImpl;
 import com.codurance.training.tasks.UseCase.AddTask.AddTaskImpl;
 import com.codurance.training.tasks.UseCase.GetTask.GetTaskImpl;
 
-public class AddAction implements Action{
+public class AddAction implements BaseController{
 
     @Override
     public void execute(Map<String, List<GetTaskImpl>> tasks, PrintWriter out, String command) {

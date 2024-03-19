@@ -10,7 +10,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.codurance.training.tasks.Controller.CommandController;
+import com.codurance.training.tasks.Adapter.CommandControllerFactory;
 import com.codurance.training.tasks.Presenter.TaskListConsole;
 
 import static java.lang.System.lineSeparator;
@@ -30,7 +30,7 @@ public final class ApplicationTest {
     public ApplicationTest() throws IOException {
         BufferedReader in = new BufferedReader(new InputStreamReader(new PipedInputStream(inStream)));
         PrintWriter out = new PrintWriter(new PipedOutputStream(outStream), true);
-        CommandController commandController = new CommandController(out);
+        CommandControllerFactory commandController = new CommandControllerFactory(out);
         TaskListConsole taskList = new TaskListConsole(in, out, commandController);
         applicationThread = new Thread(taskList);
     }

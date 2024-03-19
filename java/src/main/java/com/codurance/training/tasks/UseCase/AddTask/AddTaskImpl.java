@@ -4,7 +4,7 @@ import java.io.PrintWriter;
 import java.util.List;
 import java.util.Map;
 
-import com.codurance.training.tasks.Entity.Task.Task;
+import com.codurance.training.tasks.Entity.Task;
 import com.codurance.training.tasks.UseCase.GetTask.GetTaskImpl;
 
 public class AddTaskImpl implements AddTask{

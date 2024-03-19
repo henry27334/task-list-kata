@@ -1,4 +1,4 @@
-package com.codurance.training.tasks.UseCase.Action;
+package com.codurance.training.tasks.Adapter.Controller;
 
 import java.io.PrintWriter;
 import java.util.List;
@@ -8,7 +8,7 @@ import com.codurance.training.tasks.UseCase.CheckTask.CheckTask;
 import com.codurance.training.tasks.UseCase.CheckTask.CheckTaskImpl;
 import com.codurance.training.tasks.UseCase.GetTask.GetTaskImpl;
 
-public class CheckAction implements Action {
+public class CheckController implements BaseController {
 
     @Override
     public void execute(Map<String, List<GetTaskImpl>> tasks, PrintWriter out, String command) {

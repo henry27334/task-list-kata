@@ -5,16 +5,16 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-import com.codurance.training.tasks.Controller.CommandController;
+import com.codurance.training.tasks.Adapter.CommandControllerFactory;
 
 public final class TaskListConsole implements Runnable {
     private static final String QUIT = "quit";
 
     private final BufferedReader in;
     private final PrintWriter out;
-    private final CommandController commandController;
+    private final CommandControllerFactory commandController;
 
-    public TaskListConsole(BufferedReader reader, PrintWriter writer, CommandController commandController) {
+    public TaskListConsole(BufferedReader reader, PrintWriter writer, CommandControllerFactory commandController) {
         this.in = reader;
         this.out = writer;
         this.commandController = commandController;
@@ -34,10 +34,12 @@ public final class TaskListConsole implements Runnable {
                 break;
             }
 
-            commandController.execute(command);
+            ConsolePresenter consolePresenter = commandController.execute(command);
+            if(consolePresenter.isPresent()){
+                out.print(consolePresenter.getMessage());
+                
+            }
         }
     }
-
-
 
 }
