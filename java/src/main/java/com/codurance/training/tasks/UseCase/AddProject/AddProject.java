@@ -14,8 +14,7 @@ public class AddProject implements UseCaseInterface<AddProjectInput, AddProjectO
     public AddProjectOutput execute(AddProjectInput input) {
 
         Project project = new Project(input.getProjectName());
-
-        Projects projects = new Projects();
+        Projects projects = Projects.getProjectList();
         List<Project> allProjects = projects.getProjects();
         allProjects.add(project);
 

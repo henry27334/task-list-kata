@@ -1,19 +1,34 @@
 package com.codurance.training.tasks.Adapter.Controller;
 
-import java.io.PrintWriter;
-import java.util.List;
-import java.util.Map;
-
-import com.codurance.training.tasks.UseCase.GetTask.GetTaskImpl;
+import com.codurance.training.tasks.Presenter.ConsolePresenter;
+import com.codurance.training.tasks.UseCase.Input.UncheckTaskInput;
+import com.codurance.training.tasks.UseCase.Output.UncheckTaskOutput;
 import com.codurance.training.tasks.UseCase.UncheckTask.UncheckTask;
-import com.codurance.training.tasks.UseCase.UncheckTask.UncheckTaskImpl;
 
 public class UncheckController implements BaseController{
 
+    private UncheckTask uncheckTask;
+
+    public UncheckController(UncheckTask uncheckTask) {
+        this.uncheckTask = uncheckTask;
+    }
+
     @Override
-    public void execute(Map<String, List<GetTaskImpl>> tasks, PrintWriter out, String command) {
-        UncheckTask uncheckTask = new UncheckTaskImpl(tasks, out, command);
-        uncheckTask.unsetCheck();
+    public ConsolePresenter execute(String command) {
+        String[] subcommandRest = command.split(" ", 3);
+        String subcommand = subcommandRest[1];
+
+        UncheckTaskInput uncheckTaskInput = new UncheckTaskInput();
+        uncheckTaskInput.setId(Integer.parseInt(subcommand));
+        UncheckTaskOutput uncheckTaskOutput = uncheckTask.execute(uncheckTaskInput);
+
+        ConsolePresenter consolePresenter = new ConsolePresenter(uncheckTaskOutput.getMessage());
+        
+        if(consolePresenter.getMessage() != null){
+            consolePresenter.setPresentStatus();
+        }
+        
+        return consolePresenter;
     }
     
 

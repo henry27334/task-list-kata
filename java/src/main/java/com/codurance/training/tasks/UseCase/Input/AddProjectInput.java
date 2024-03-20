@@ -1,6 +1,6 @@
 package com.codurance.training.tasks.UseCase.Input;
 
-import com.codurance.training.tasks.Entity.ProjectName;
+import com.codurance.training.tasks.Entity.ValueObject.ProjectName;
 
 public class AddProjectInput implements UseCaseInput{
 

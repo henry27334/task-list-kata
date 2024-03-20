@@ -1,6 +1,6 @@
 package com.codurance.training.tasks.UseCase.Input;
 
-import com.codurance.training.tasks.Entity.ProjectName;
+import com.codurance.training.tasks.Entity.ValueObject.ProjectName;
 
 public class AddTaskInput implements UseCaseInput {
     private long taskId; 
@@ -20,8 +20,8 @@ public class AddTaskInput implements UseCaseInput {
         return projectName.value();
     }
 
-    public void setProjectName(ProjectName projectName) {
-        this.projectName = projectName;
+    public void setProjectName(String projectName) {
+        this.projectName = new ProjectName(projectName);
     }
 
     public String getDescription() {

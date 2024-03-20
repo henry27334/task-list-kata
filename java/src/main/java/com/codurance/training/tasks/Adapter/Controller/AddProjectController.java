@@ -15,8 +15,10 @@ public class AddProjectController implements BaseController {
     @Override
     public ConsolePresenter execute(String command) {
 
+        String[] subcommandRest = command.split(" ", 3);
+
         AddProjectInput addProjectInput = new AddProjectInput();
-        addProjectInput.setProjectName(command);
+        addProjectInput.setProjectName(subcommandRest[2]);
         AddProjectOutput addProjectOutput = addProject.execute(addProjectInput);
         
         ConsolePresenter consolePresenter = new ConsolePresenter(addProjectOutput.getMessage());

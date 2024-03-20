@@ -1,7 +1,6 @@
 package com.codurance.training.tasks.Adapter.Controller;
 
 import com.codurance.training.tasks.Presenter.ConsolePresenter;
-import com.codurance.training.tasks.UseCase.UseCaseInterface;
 import com.codurance.training.tasks.UseCase.AddTask.AddTask;
 import com.codurance.training.tasks.UseCase.Input.AddTaskInput;
 import com.codurance.training.tasks.UseCase.Output.AddTaskOutput;
@@ -17,9 +16,11 @@ public class AddTaskController implements BaseController{
     @Override
     public ConsolePresenter execute(String command) {
 
+        String[] projectTask = command.split(" ", 4);
+
         AddTaskInput addTaskInput = new AddTaskInput();
-        addTaskInput.setProjectName(null);
-        addTaskInput.setDescription(null);
+        addTaskInput.setProjectName(projectTask[2]);
+        addTaskInput.setDescription(projectTask[3]);
         addTaskInput.setCheck(false);
         
         AddTaskOutput addTaskOutput = addTask.execute(addTaskInput);

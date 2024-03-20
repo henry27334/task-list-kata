@@ -6,10 +6,10 @@ import com.codurance.training.tasks.UseCase.Input.ShowErrorInput;
 import com.codurance.training.tasks.UseCase.Output.ShowErrorOutput;
 import com.codurance.training.tasks.UseCase.Output.UseCaseOutput;
 
-public class ErrorController implements BaseController {
+public class ShowErrorController implements BaseController {
     private UseCaseInterface<ShowErrorInput, ShowErrorOutput> showError;
     
-    public ErrorController(UseCaseInterface<ShowErrorInput, ShowErrorOutput> showError){
+    public ShowErrorController(UseCaseInterface<ShowErrorInput, ShowErrorOutput> showError){
         this.showError = showError;
     }
 

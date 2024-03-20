@@ -10,7 +10,7 @@ public class ShowHelp implements UseCaseInterface<ShowHelpInput, ShowHelpOutput>
     public ShowHelpOutput execute(ShowHelpInput input) {
         String message = "Commands:" + "\n" + 
                          "  show" + "\n" +
-                         "  add project <project name>" +
+                         "  add project <project name>" + "\n" +
                          "  add task <project name> <task description>" + "\n" +
                          "  check <task ID>" + "\n" +
                          "  uncheck <task ID>" + "\n";

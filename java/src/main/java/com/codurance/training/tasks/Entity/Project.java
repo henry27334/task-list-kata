@@ -3,6 +3,8 @@ package com.codurance.training.tasks.Entity;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.codurance.training.tasks.Entity.ValueObject.ProjectName;
+
 public class Project {  
     private ProjectName projectName; 
     private List<Task> tasks;

@@ -1,4 +1,4 @@
-package com.codurance.training.tasks.Entity;
+package com.codurance.training.tasks.Entity.ValueObject;
 
 public record ProjectName(String value)  {
     public static ProjectName of(String name) {

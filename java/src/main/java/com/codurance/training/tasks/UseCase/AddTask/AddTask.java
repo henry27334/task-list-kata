@@ -1,9 +1,7 @@
 package com.codurance.training.tasks.UseCase.AddTask;
 
-import static java.lang.System.in;
 
 import java.util.List;
-import java.util.Map;
 
 import com.codurance.training.tasks.Entity.Project;
 import com.codurance.training.tasks.Entity.Projects;
@@ -18,7 +16,7 @@ public class AddTask implements UseCaseInterface<AddTaskInput, AddTaskOutput>{
     public AddTaskOutput execute(AddTaskInput input) {
 
         String message = null;
-        Projects projects = new Projects();
+        Projects projects = Projects.getProjectList();
         List<Project> allProject = projects.getProjects();
 
         Project projectTasks = null;
@@ -29,12 +27,17 @@ public class AddTask implements UseCaseInterface<AddTaskInput, AddTaskOutput>{
             }
         }
 
+        long lastId = 1;
+        for (Project singleProject : allProject) {
+            lastId += singleProject.getTasks().size();
+        }
+
         if (projectTasks == null) {
             message += String.format("Could not find a project with the name \"%s\".", input.getProjectName());
             message += "\n";
         }
 
-        Task newTask = new Task(input.getTaskId(), input.getDescription(), input.getCheck());
+        Task newTask = new Task(lastId, input.getDescription(), input.getCheck());
         projectTasks.getTasks().add(newTask);
 
         AddTaskOutput addTaskOutput = new AddTaskOutput();
