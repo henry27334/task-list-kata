@@ -1,5 +1,5 @@
 # Homework3: Refactor
-1. 依據Teddy的回饋修正taka-list
+1. 依據Teddy的回饋修正task-list-kata
 2. 新增"ProjectName" Value Object
 3. 將Controller資料夾重新命名為Adapter資料夾
 4. 修改Action，組成對應UseCase的Controller
@@ -7,6 +7,7 @@
 6. 將Add操作拆分為AddProject及AddTask，兩者理應是不同的UseCase
 7. 不應在外層傳入ProjectList，改為放在Entity
 8. 重新命名部分UseCase及Controller，明確表現意圖
+9. 藉由Input/Output作為輸入輸出，不直接使用Entity
 
 # Homework2: Refactor
 1. 將程式碼分層為Entity, Use case, Controller及Presenter，並以資料夾封裝表示
