@@ -6,17 +6,23 @@ import java.util.List;
 import java.util.Map;
 
 import com.codurance.training.tasks.Adapter.Controller.AddAction;
+import com.codurance.training.tasks.Adapter.Controller.AddProjectController;
+import com.codurance.training.tasks.Adapter.Controller.AddTaskController;
 import com.codurance.training.tasks.Adapter.Controller.BaseController;
 import com.codurance.training.tasks.Adapter.Controller.CheckController;
 import com.codurance.training.tasks.Adapter.Controller.ErrorController;
-import com.codurance.training.tasks.Adapter.Controller.HelpController;
+import com.codurance.training.tasks.Adapter.Controller.ShowHelpController;
+import com.codurance.training.tasks.Adapter.Controller.ShowProjectController;
 import com.codurance.training.tasks.Adapter.Controller.ShowController;
 import com.codurance.training.tasks.Adapter.Controller.UncheckController;
 import com.codurance.training.tasks.Presenter.ConsolePresenter;
 import com.codurance.training.tasks.UseCase.UseCaseInterface;
+import com.codurance.training.tasks.UseCase.AddProject.AddProject;
+import com.codurance.training.tasks.UseCase.AddTask.AddTask;
 import com.codurance.training.tasks.UseCase.GetTask.GetTaskImpl;
-import com.codurance.training.tasks.UseCase.Help.Help;
 import com.codurance.training.tasks.UseCase.ShowError.ShowError;
+import com.codurance.training.tasks.UseCase.ShowHelp.ShowHelp;
+import com.codurance.training.tasks.UseCase.ShowProject.ShowProject;
 
 public class CommandControllerFactory {
 
@@ -30,12 +36,23 @@ public class CommandControllerFactory {
         BaseController selectedAction;
     
         switch (command) {
-            // case "show":
-            //     selectedAction = new ShowController();
-            //     break;
-            // case "add":
-            //     selectedAction = new AddAction();
-            //     break;
+            case "show":
+                ShowProject showProject = new ShowProject();
+                selectedAction = new ShowProjectController(showProject);
+                break;
+            case "add":
+                String[] subcommandRest = command.split(" ", 3);
+                String subcommand = subcommandRest[1];
+
+                if (subcommand.equals("project")) {
+                    AddProject addProject = new AddProject();
+                    selectedAction = new AddProjectController(addProject);
+                } else {
+                    AddTask addTask = new AddTask();
+                    selectedAction = new AddTaskController(addTask);                    
+                }
+
+                break;
             // case "check":
             //     selectedAction = new CheckController();
             //     break;
@@ -43,8 +60,8 @@ public class CommandControllerFactory {
             //     selectedAction = new UncheckController();
             //     break;
             case "help":
-                Help help = new Help();
-                selectedAction = new HelpController(help);
+                ShowHelp help = new ShowHelp();
+                selectedAction = new ShowHelpController(help);
                 break;
             default:
                 ShowError showError = new ShowError();

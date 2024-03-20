@@ -3,6 +3,7 @@
 2. 將Controller資料夾重新命名為Adapter資料夾
 3. 修改Action，組成對應UseCase的Controller
 4. 實作不應寫在UseCase, 更改實作到Controller
+5. 將Add操作拆分為AddProject及AddTask，兩者理應是不同的UseCase
 
 # Homework2: Refactor
 1. 將程式碼分層為Entity, Use case, Controller及Presenter，並以資料夾封裝表示

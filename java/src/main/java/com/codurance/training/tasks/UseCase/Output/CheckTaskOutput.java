@@ -1,6 +1,7 @@
 package com.codurance.training.tasks.UseCase.Output;
 
-public class HelpOutput implements UseCaseOutput {
+public class CheckTaskOutput implements UseCaseOutput {
+
     private String message;
 
     @Override

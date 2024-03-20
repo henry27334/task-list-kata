@@ -2,11 +2,9 @@ package com.codurance.training.tasks.UseCase.Input;
 
 import com.codurance.training.tasks.Entity.ProjectName;
 
-public class AddProjectInput {
+public class AddProjectInput implements UseCaseInput{
 
     private ProjectName projectName;
-
-    public AddProjectInput() {}
 
     public ProjectName getProjectName() {
         return projectName;
