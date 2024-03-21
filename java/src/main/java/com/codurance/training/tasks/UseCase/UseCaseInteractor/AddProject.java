@@ -12,10 +12,8 @@ public class AddProject implements UseCaseInterface<AddProjectInputBoundary, Add
     @Override
     public AddProjectOutputBoundary execute(AddProjectInputBoundary input) {
 
-        Project project = new Project(input.getProjectName());
-        TaskList projects = TaskList.getProjectList();
-        List<Project> allProjects = projects.getProjects();
-        allProjects.add(project);
+        TaskList projects = TaskList.getTaskList();
+        projects.addProject(input.getProjectName());
 
         AddProjectOutputBoundary addProjectOutput = new AddProjectOutputBoundary();
 

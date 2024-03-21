@@ -16,26 +16,18 @@ public class AddTask implements UseCaseInterface<AddTaskInputBoundary, AddTaskOu
     public AddTaskOutputBoundary execute(AddTaskInputBoundary input) {
 
         String message = null;
-        TaskList projects = TaskList.getProjectList();
-        List<Project> allProject = projects.getProjects();
+        
+        TaskList projects = TaskList.getTaskList();
 
-        Project projectTasks = null;
+        Project project = projects.getProject(input.getProjectName());
 
-        for(Project singleProject : allProject){
-            if (singleProject.getProjectName().equals(input.getProjectName())) {
-                projectTasks = singleProject;
-            }
+        if (project == null) {
+            message += String.format("Could not find a project with the name \"%s\".", input.getProjectName());
+            message += System.lineSeparator();
         }
 
         long lastId = TaskCounter.getLastId(projects);
-        
-        if (projectTasks == null) {
-            message += String.format("Could not find a project with the name \"%s\".", input.getProjectName());
-            message += "\n";
-        }
-
-        Task newTask = new Task(lastId, input.getDescription(), input.getCheck());
-        projectTasks.getTasks().add(newTask);
+        project.addTask(lastId, input.getDescription(), input.getCheck());
 
         AddTaskOutputBoundary addTaskOutput = new AddTaskOutputBoundary();
         addTaskOutput.setMessage(message);

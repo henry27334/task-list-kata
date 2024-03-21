@@ -13,9 +13,7 @@ public class CheckTask implements UseCaseInterface<CheckTaskInputBoundary, Check
     @Override
     public CheckTaskOutputBoundary execute(CheckTaskInputBoundary input) {
         
-        TaskList projectList = TaskList.getProjectList();
-        List<Project> projects = projectList.getProjects();
-        String message = setDone(projects, input.getId(), true);
+        String message = setDone(input.getId(), true);
 
         CheckTaskOutputBoundary checkTaskOutput = new CheckTaskOutputBoundary();
         checkTaskOutput.setMessage(message);
@@ -23,20 +21,27 @@ public class CheckTask implements UseCaseInterface<CheckTaskInputBoundary, Check
         return checkTaskOutput;
     }
 
-    private String setDone(List<Project> allProjects, long id, boolean done) {
+    private String setDone(long id, boolean done) {
+
+        TaskList taskList = TaskList.getTaskList();
+        List<Project> projects = taskList.getProjects();
+
+        Task task = null;
         String message = null;
         
-        for (Project project : allProjects) {
-            for (Task task : project.getTasks()) {
-                if (task.getId() == id) {
-                    task.setDone(done);
-                    return message;
-                }
+        for (Project project : projects) {
+            task = project.getTask(id);
+
+            if (task != null) {
+                task.setDone(done);
+                break;
             }
         }
 
-        message += String.format("Could not find a task with an ID of %d.", id);
-        message += "\n";
+        if (task == null) {
+            message += String.format("Could not find a task with an ID of %d.", id);
+            message += "\n";
+        }
 
         return message;
     }

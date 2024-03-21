@@ -13,16 +13,16 @@ public class ShowProject implements UseCaseInterface<ShowProjectInputBoundary, S
     @Override
     public ShowProjectOutputBoundary execute(ShowProjectInputBoundary input) {
 
-        TaskList projects = TaskList.getProjectList();
+        TaskList projects = TaskList.getTaskList();
         List<Project> allProject = projects.getProjects();
 
         String message = null;
 
         for (Project project : allProject) {
             if(message == null && project.getProjectName() != null) {
-                message = project.getProjectName();
+                message = project.getProjectName().value();
             } else {
-                message += project.getProjectName();
+                message += project.getProjectName().value();
             }
             
             message += System.lineSeparator();

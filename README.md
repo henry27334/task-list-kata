@@ -2,6 +2,8 @@
 1. 將外層的Prsenter修正為IO
 2. 將Projects改名為TaskList
 3. 新增Service "TaskCounter" 計算Task的ID
+4. 將Entity的getList操作改為不可更改的，以維持封裝
+5. 將Entity的相關操作移到Entity內部，只有Entity可以使用與管理
 
 # Homework3: Refactor
 1. 依據Teddy的回饋修正task-list-kata

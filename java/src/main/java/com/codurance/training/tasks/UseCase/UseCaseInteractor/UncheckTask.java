@@ -10,13 +10,10 @@ import com.codurance.training.tasks.UseCase.OutputBoundary.UncheckTaskOutputBoun
 
 public class UncheckTask implements UseCaseInterface<UncheckTaskInputBoundary, UncheckTaskOutputBoundary> {
 
-
     @Override
     public UncheckTaskOutputBoundary execute(UncheckTaskInputBoundary input) {
         
-        TaskList projectList = TaskList.getProjectList();
-        List<Project> projects = projectList.getProjects();
-        String message = setDone(projects, input.getId(), false);
+        String message = setDone(input.getId(), false);
 
         UncheckTaskOutputBoundary uncheckTaskOutput = new UncheckTaskOutputBoundary();
         uncheckTaskOutput.setMessage(message);
@@ -24,23 +21,30 @@ public class UncheckTask implements UseCaseInterface<UncheckTaskInputBoundary, U
         return uncheckTaskOutput;
     }
 
-    private String setDone(List<Project> allProjects, long id, boolean done) {
+    private String setDone(long id, boolean done) {
+
+        TaskList taskList = TaskList.getTaskList();
+        List<Project> projects = taskList.getProjects();
+
+        Task task = null;
         String message = null;
         
-        for (Project project : allProjects) {
-            for (Task task : project.getTasks()) {
-                if (task.getId() == id) {
-                    task.setDone(done);
-                    return message;
-                }
+        for (Project project : projects) {
+            task = project.getTask(id);
+            task.setDone(done);
+            
+            if (task != null) {
+                task.setDone(done);
+                break;
             }
         }
 
-        message += String.format("Could not find a task with an ID of %d.", id);
-        message += "\n";
+        if (task == null) {
+            message += String.format("Could not find a task with an ID of %d.", id);
+            message += "\n";
+        }
 
         return message;
     }
-
 
 } 

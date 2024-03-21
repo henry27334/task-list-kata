@@ -16,8 +16,8 @@ public class AddTaskInputBoundary implements UseCaseInputBoundary {
         this.taskId = taskId;
     }
 
-    public String getProjectName() {
-        return projectName.value();
+    public ProjectName getProjectName() {
+        return projectName;
     }
 
     public void setProjectName(String projectName) {

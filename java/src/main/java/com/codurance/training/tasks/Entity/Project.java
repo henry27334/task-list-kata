@@ -1,24 +1,41 @@
 package com.codurance.training.tasks.Entity;
 
-import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 import com.codurance.training.tasks.Entity.ValueObject.ProjectName;
 
 public class Project {  
     private ProjectName projectName; 
-    private List<Task> tasks;
+    private final List<Task> tasks;
 
-    public Project(ProjectName projectName) {
+    public Project(ProjectName projectName, List<Task> tasks) {
         this.projectName = projectName;
-        this.tasks = new ArrayList<>();
+        this.tasks = tasks;
     }
 
-    public String getProjectName() {
-        return projectName.value();
+    public ProjectName getProjectName() {
+        return projectName;
     }
 
     public List<Task> getTasks() {
-        return tasks;
+        return Collections.unmodifiableList(tasks);
+    }
+
+    public void addTask(long id, String description, boolean isCheck) {
+        Task task = new Task(id, description, isCheck);
+        tasks.add(task);
+    }
+
+    public Task getTask(long id) {
+        Optional<Task> task = tasks.stream().filter(t -> t.getId() == id).findFirst();
+        
+        if(task.isEmpty()) {
+            return null;
+        }
+
+        return task.get();
     }
 }
