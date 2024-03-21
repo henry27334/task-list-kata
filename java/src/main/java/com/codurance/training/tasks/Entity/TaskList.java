@@ -45,4 +45,20 @@ public class TaskList {
         return p.get();
     }
 
+    public Boolean setDone(long id, boolean done) {
+        Optional<Task> task =
+            projects.stream()
+            .flatMap(p -> p.getTasks().stream())
+            .filter(t -> t.getId() == id)
+            .findFirst();
+
+        if (task.isEmpty()) {
+            return false;
+        }
+
+        task.get().setDone(done);
+
+        return true;
+
+    }
 }

@@ -1,6 +1,5 @@
 package com.codurance.training.tasks.Entity;
 
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
@@ -19,14 +18,14 @@ public class Project {
     public ProjectName getProjectName() {
         return projectName;
     }
-
-    public List<Task> getTasks() {
-        return Collections.unmodifiableList(tasks);
-    }
-
+    
     public void addTask(long id, String description, boolean isCheck) {
         Task task = new Task(id, description, isCheck);
         tasks.add(task);
+    }
+
+    public List<Task> getTasks() {
+        return Collections.unmodifiableList(tasks);
     }
 
     public Task getTask(long id) {
@@ -38,4 +37,5 @@ public class Project {
 
         return task.get();
     }
+    
 }

@@ -1,12 +1,9 @@
 package com.codurance.training.tasks.UseCase.UseCaseInteractor;
 
 
-import java.util.List;
-
 import com.codurance.training.tasks.Entity.Project;
 import com.codurance.training.tasks.Entity.TaskList;
 import com.codurance.training.tasks.Entity.Service.TaskCounter;
-import com.codurance.training.tasks.Entity.Task;
 import com.codurance.training.tasks.UseCase.InputBoundary.AddTaskInputBoundary;
 import com.codurance.training.tasks.UseCase.OutputBoundary.AddTaskOutputBoundary;
 
