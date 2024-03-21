@@ -5,7 +5,7 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 
 import com.codurance.training.tasks.Adapter.CommandController;
-import com.codurance.training.tasks.Presenter.TaskListConsole;
+import com.codurance.training.tasks.IO.TaskListConsole;
 
 public class TaskListApp {
     public static void main(String[] args) throws Exception {

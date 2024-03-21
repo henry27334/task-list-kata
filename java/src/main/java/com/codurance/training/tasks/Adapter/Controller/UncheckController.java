@@ -1,9 +1,9 @@
 package com.codurance.training.tasks.Adapter.Controller;
 
-import com.codurance.training.tasks.Presenter.ConsolePresenter;
+import com.codurance.training.tasks.IO.ConsolePresenter;
 import com.codurance.training.tasks.UseCase.InputBoundary.UncheckTaskInputBoundary;
 import com.codurance.training.tasks.UseCase.OutputBoundary.UncheckTaskOutputBoundary;
-import com.codurance.training.tasks.UseCase.UncheckTask.UncheckTask;
+import com.codurance.training.tasks.UseCase.UseCaseInteractor.UncheckTask;
 
 public class UncheckController implements BaseController{
 

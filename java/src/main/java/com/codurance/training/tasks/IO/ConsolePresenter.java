@@ -1,4 +1,4 @@
-package com.codurance.training.tasks.Presenter;
+package com.codurance.training.tasks.IO;
 
 public class ConsolePresenter {
     private boolean isPresent = false;

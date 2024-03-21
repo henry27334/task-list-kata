@@ -1,11 +1,10 @@
-package com.codurance.training.tasks.UseCase.CheckTask;
+package com.codurance.training.tasks.UseCase.UseCaseInteractor;
 
 import java.util.List;
 
 import com.codurance.training.tasks.Entity.Project;
-import com.codurance.training.tasks.Entity.Projects;
+import com.codurance.training.tasks.Entity.TaskList;
 import com.codurance.training.tasks.Entity.Task;
-import com.codurance.training.tasks.UseCase.UseCaseInterface;
 import com.codurance.training.tasks.UseCase.InputBoundary.CheckTaskInputBoundary;
 import com.codurance.training.tasks.UseCase.OutputBoundary.CheckTaskOutputBoundary;
 
@@ -14,7 +13,7 @@ public class CheckTask implements UseCaseInterface<CheckTaskInputBoundary, Check
     @Override
     public CheckTaskOutputBoundary execute(CheckTaskInputBoundary input) {
         
-        Projects projectList = Projects.getProjectList();
+        TaskList projectList = TaskList.getProjectList();
         List<Project> projects = projectList.getProjects();
         String message = setDone(projects, input.getId(), true);
 

@@ -1,11 +1,10 @@
-package com.codurance.training.tasks.UseCase.ShowProject;
+package com.codurance.training.tasks.UseCase.UseCaseInteractor;
 
 import java.util.List;
 
 import com.codurance.training.tasks.Entity.Project;
-import com.codurance.training.tasks.Entity.Projects;
+import com.codurance.training.tasks.Entity.TaskList;
 import com.codurance.training.tasks.Entity.Task;
-import com.codurance.training.tasks.UseCase.UseCaseInterface;
 import com.codurance.training.tasks.UseCase.InputBoundary.ShowProjectInputBoundary;
 import com.codurance.training.tasks.UseCase.OutputBoundary.ShowProjectOutputBoundary;
 
@@ -14,7 +13,7 @@ public class ShowProject implements UseCaseInterface<ShowProjectInputBoundary, S
     @Override
     public ShowProjectOutputBoundary execute(ShowProjectInputBoundary input) {
 
-        Projects projects = Projects.getProjectList();
+        TaskList projects = TaskList.getProjectList();
         List<Project> allProject = projects.getProjects();
 
         String message = null;

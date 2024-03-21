@@ -1,6 +1,5 @@
-package com.codurance.training.tasks.UseCase.ShowError;
+package com.codurance.training.tasks.UseCase.UseCaseInteractor;
 
-import com.codurance.training.tasks.UseCase.UseCaseInterface;
 import com.codurance.training.tasks.UseCase.InputBoundary.ShowErrorInputBoundary;
 import com.codurance.training.tasks.UseCase.OutputBoundary.ShowErrorOutputBoundary;
 

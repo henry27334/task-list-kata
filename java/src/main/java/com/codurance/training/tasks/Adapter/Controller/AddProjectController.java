@@ -1,9 +1,9 @@
 package com.codurance.training.tasks.Adapter.Controller;
 
-import com.codurance.training.tasks.Presenter.ConsolePresenter;
-import com.codurance.training.tasks.UseCase.AddProject.AddProject;
+import com.codurance.training.tasks.IO.ConsolePresenter;
 import com.codurance.training.tasks.UseCase.InputBoundary.AddProjectInputBoundary;
 import com.codurance.training.tasks.UseCase.OutputBoundary.AddProjectOutputBoundary;
+import com.codurance.training.tasks.UseCase.UseCaseInteractor.AddProject;
 
 public class AddProjectController implements BaseController {
     private AddProject addProject;

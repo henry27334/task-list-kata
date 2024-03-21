@@ -1,4 +1,4 @@
-package com.codurance.training.tasks.Presenter;
+package com.codurance.training.tasks.IO;
 
 
 import java.io.BufferedReader;

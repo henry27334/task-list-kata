@@ -3,17 +3,17 @@ package com.codurance.training.tasks.Entity;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Projects {
-    private static Projects projectList = null;
+public class TaskList {
+    private static TaskList projectList = null;
     private final List<Project> projects;
 
-    private Projects() {
+    private TaskList() {
         this.projects = new ArrayList<>();
     }
 
-    public static Projects getProjectList() {
+    public static TaskList getProjectList() {
         if (projectList == null) {
-            projectList = new Projects();
+            projectList = new TaskList();
         } 
 
         return projectList;

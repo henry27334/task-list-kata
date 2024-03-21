@@ -1,10 +1,10 @@
 package com.codurance.training.tasks.Adapter.Controller;
 
-import com.codurance.training.tasks.Presenter.ConsolePresenter;
-import com.codurance.training.tasks.UseCase.UseCaseInterface;
+import com.codurance.training.tasks.IO.ConsolePresenter;
 import com.codurance.training.tasks.UseCase.InputBoundary.ShowErrorInputBoundary;
 import com.codurance.training.tasks.UseCase.OutputBoundary.ShowErrorOutputBoundary;
 import com.codurance.training.tasks.UseCase.OutputBoundary.UseCaseOutputBoundary;
+import com.codurance.training.tasks.UseCase.UseCaseInteractor.UseCaseInterface;
 
 public class ShowErrorController implements BaseController {
     private UseCaseInterface<ShowErrorInputBoundary, ShowErrorOutputBoundary> showError;

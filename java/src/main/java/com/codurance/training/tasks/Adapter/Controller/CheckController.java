@@ -1,10 +1,10 @@
 package com.codurance.training.tasks.Adapter.Controller;
 
 
-import com.codurance.training.tasks.Presenter.ConsolePresenter;
-import com.codurance.training.tasks.UseCase.CheckTask.CheckTask;
+import com.codurance.training.tasks.IO.ConsolePresenter;
 import com.codurance.training.tasks.UseCase.InputBoundary.CheckTaskInputBoundary;
 import com.codurance.training.tasks.UseCase.OutputBoundary.CheckTaskOutputBoundary;
+import com.codurance.training.tasks.UseCase.UseCaseInteractor.CheckTask;
 
 
 public class CheckController implements BaseController {

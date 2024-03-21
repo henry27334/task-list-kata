@@ -1,3 +1,8 @@
+# Homework4: Refactor
+1. 將外層的Prsenter修正為IO
+2. 將Projects改名為TaskList
+3. 新增Service "TaskCounter" 計算Task的ID
+
 # Homework3: Refactor
 1. 依據Teddy的回饋修正task-list-kata
 2. 新增"ProjectName" Value Object

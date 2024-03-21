@@ -11,7 +11,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.codurance.training.tasks.Adapter.CommandController;
-import com.codurance.training.tasks.Presenter.TaskListConsole;
+import com.codurance.training.tasks.IO.TaskListConsole;
 
 import static java.lang.System.lineSeparator;
 import static org.hamcrest.MatcherAssert.assertThat;

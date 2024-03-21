@@ -1,12 +1,12 @@
-package com.codurance.training.tasks.UseCase.AddTask;
+package com.codurance.training.tasks.UseCase.UseCaseInteractor;
 
 
 import java.util.List;
 
 import com.codurance.training.tasks.Entity.Project;
-import com.codurance.training.tasks.Entity.Projects;
+import com.codurance.training.tasks.Entity.TaskList;
+import com.codurance.training.tasks.Entity.Service.TaskCounter;
 import com.codurance.training.tasks.Entity.Task;
-import com.codurance.training.tasks.UseCase.UseCaseInterface;
 import com.codurance.training.tasks.UseCase.InputBoundary.AddTaskInputBoundary;
 import com.codurance.training.tasks.UseCase.OutputBoundary.AddTaskOutputBoundary;
 
@@ -16,7 +16,7 @@ public class AddTask implements UseCaseInterface<AddTaskInputBoundary, AddTaskOu
     public AddTaskOutputBoundary execute(AddTaskInputBoundary input) {
 
         String message = null;
-        Projects projects = Projects.getProjectList();
+        TaskList projects = TaskList.getProjectList();
         List<Project> allProject = projects.getProjects();
 
         Project projectTasks = null;
@@ -27,11 +27,8 @@ public class AddTask implements UseCaseInterface<AddTaskInputBoundary, AddTaskOu
             }
         }
 
-        long lastId = 1;
-        for (Project singleProject : allProject) {
-            lastId += singleProject.getTasks().size();
-        }
-
+        long lastId = TaskCounter.getLastId(projects);
+        
         if (projectTasks == null) {
             message += String.format("Could not find a project with the name \"%s\".", input.getProjectName());
             message += "\n";

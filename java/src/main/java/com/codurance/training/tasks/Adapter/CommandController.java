@@ -9,14 +9,14 @@ import com.codurance.training.tasks.Adapter.Controller.ShowErrorController;
 import com.codurance.training.tasks.Adapter.Controller.ShowHelpController;
 import com.codurance.training.tasks.Adapter.Controller.ShowProjectController;
 import com.codurance.training.tasks.Adapter.Controller.UncheckController;
-import com.codurance.training.tasks.Presenter.ConsolePresenter;
-import com.codurance.training.tasks.UseCase.AddProject.AddProject;
-import com.codurance.training.tasks.UseCase.AddTask.AddTask;
-import com.codurance.training.tasks.UseCase.CheckTask.CheckTask;
-import com.codurance.training.tasks.UseCase.ShowError.ShowError;
-import com.codurance.training.tasks.UseCase.ShowHelp.ShowHelp;
-import com.codurance.training.tasks.UseCase.ShowProject.ShowProject;
-import com.codurance.training.tasks.UseCase.UncheckTask.UncheckTask;
+import com.codurance.training.tasks.IO.ConsolePresenter;
+import com.codurance.training.tasks.UseCase.UseCaseInteractor.AddProject;
+import com.codurance.training.tasks.UseCase.UseCaseInteractor.AddTask;
+import com.codurance.training.tasks.UseCase.UseCaseInteractor.CheckTask;
+import com.codurance.training.tasks.UseCase.UseCaseInteractor.ShowError;
+import com.codurance.training.tasks.UseCase.UseCaseInteractor.ShowHelp;
+import com.codurance.training.tasks.UseCase.UseCaseInteractor.ShowProject;
+import com.codurance.training.tasks.UseCase.UseCaseInteractor.UncheckTask;
 
 public class CommandController {
 

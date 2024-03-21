@@ -1,4 +1,4 @@
-package com.codurance.training.tasks.UseCase;
+package com.codurance.training.tasks.UseCase.UseCaseInteractor;
 
 import com.codurance.training.tasks.UseCase.InputBoundary.UseCaseInputBoundary;
 import com.codurance.training.tasks.UseCase.OutputBoundary.UseCaseOutputBoundary;

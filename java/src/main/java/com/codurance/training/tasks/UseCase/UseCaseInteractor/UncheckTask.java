@@ -1,11 +1,10 @@
-package com.codurance.training.tasks.UseCase.UncheckTask;
+package com.codurance.training.tasks.UseCase.UseCaseInteractor;
 
 import java.util.List;
 
 import com.codurance.training.tasks.Entity.Project;
-import com.codurance.training.tasks.Entity.Projects;
+import com.codurance.training.tasks.Entity.TaskList;
 import com.codurance.training.tasks.Entity.Task;
-import com.codurance.training.tasks.UseCase.UseCaseInterface;
 import com.codurance.training.tasks.UseCase.InputBoundary.UncheckTaskInputBoundary;
 import com.codurance.training.tasks.UseCase.OutputBoundary.UncheckTaskOutputBoundary;
 
@@ -15,7 +14,7 @@ public class UncheckTask implements UseCaseInterface<UncheckTaskInputBoundary, U
     @Override
     public UncheckTaskOutputBoundary execute(UncheckTaskInputBoundary input) {
         
-        Projects projectList = Projects.getProjectList();
+        TaskList projectList = TaskList.getProjectList();
         List<Project> projects = projectList.getProjects();
         String message = setDone(projects, input.getId(), false);
 
