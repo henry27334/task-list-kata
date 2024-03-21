@@ -1,6 +1,6 @@
 package com.codurance.training.tasks.Adapter.Controller;
 
-import com.codurance.training.tasks.IO.ConsolePresenter;
+import com.codurance.training.tasks.IO.MessagePresenter;
 import com.codurance.training.tasks.UseCase.InputBoundary.ShowErrorInputBoundary;
 import com.codurance.training.tasks.UseCase.OutputBoundary.ShowErrorOutputBoundary;
 import com.codurance.training.tasks.UseCase.OutputBoundary.UseCaseOutputBoundary;
@@ -14,12 +14,12 @@ public class ShowErrorController implements BaseController {
     }
 
     @Override
-    public ConsolePresenter execute(String command) {
+    public MessagePresenter execute(String command) {
         ShowErrorInputBoundary showErrorInput = new ShowErrorInputBoundary();
         showErrorInput.setMessage(command);
         UseCaseOutputBoundary showErrorOutput = showError.execute(showErrorInput);
 
-        ConsolePresenter consolePresenter = new ConsolePresenter(showErrorOutput.getOutput());
+        MessagePresenter consolePresenter = new MessagePresenter(showErrorOutput.getOutput());
         consolePresenter.setPresentStatus();
 
         return consolePresenter;

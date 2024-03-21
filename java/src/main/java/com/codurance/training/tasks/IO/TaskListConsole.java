@@ -34,7 +34,7 @@ public final class TaskListConsole implements Runnable {
                 break;
             }
 
-            ConsolePresenter consolePresenter = commandController.execute(command);
+            MessagePresenter consolePresenter = commandController.execute(command);
             if(consolePresenter.isPresent()){
                 out.print(consolePresenter.getMessage());
                 

@@ -1,6 +1,6 @@
 package com.codurance.training.tasks.Adapter.Controller;
 
-import com.codurance.training.tasks.IO.ConsolePresenter;
+import com.codurance.training.tasks.IO.MessagePresenter;
 import com.codurance.training.tasks.UseCase.InputBoundary.ShowProjectInputBoundary;
 import com.codurance.training.tasks.UseCase.OutputBoundary.ShowProjectOutputBoundary;
 import com.codurance.training.tasks.UseCase.UseCaseInteractor.ShowProject;
@@ -13,12 +13,12 @@ public class ShowProjectController implements BaseController{
     }
 
     @Override
-    public ConsolePresenter execute(String command) {
+    public MessagePresenter execute(String command) {
         ShowProjectInputBoundary showProjectInput = new ShowProjectInputBoundary();
         ShowProjectOutputBoundary showProjectOutput = showProject.execute(showProjectInput);
 
         String output = showProjectOutput.getMessage();
-        ConsolePresenter consolePresenter = new ConsolePresenter(output);
+        MessagePresenter consolePresenter = new MessagePresenter(output);
         
         if (output != null) {
             consolePresenter.setPresentStatus();

@@ -1,7 +1,7 @@
 package com.codurance.training.tasks.Adapter.Controller;
 
-import com.codurance.training.tasks.IO.ConsolePresenter;
+import com.codurance.training.tasks.IO.MessagePresenter;
 
 public interface BaseController {
-    ConsolePresenter execute(String command);
+    MessagePresenter execute(String command);
 }

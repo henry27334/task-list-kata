@@ -1,7 +1,7 @@
 package com.codurance.training.tasks.Adapter.Controller;
 
 
-import com.codurance.training.tasks.IO.ConsolePresenter;
+import com.codurance.training.tasks.IO.MessagePresenter;
 import com.codurance.training.tasks.UseCase.InputBoundary.CheckTaskInputBoundary;
 import com.codurance.training.tasks.UseCase.OutputBoundary.CheckTaskOutputBoundary;
 import com.codurance.training.tasks.UseCase.UseCaseInteractor.CheckTask;
@@ -16,7 +16,7 @@ public class CheckController implements BaseController {
     }
 
     @Override
-    public ConsolePresenter execute(String command) {
+    public MessagePresenter execute(String command) {
         String[] subcommandRest = command.split(" ", 3);
         String subcommand = subcommandRest[1];
 
@@ -24,7 +24,7 @@ public class CheckController implements BaseController {
         checkTaskInput.setId(Integer.parseInt(subcommand));
         CheckTaskOutputBoundary checkTaskOutput = checkTask.execute(checkTaskInput);
 
-        ConsolePresenter consolePresenter = new ConsolePresenter(checkTaskOutput.getMessage());
+        MessagePresenter consolePresenter = new MessagePresenter(checkTaskOutput.getMessage());
         
         if(consolePresenter.getMessage() != null){
             consolePresenter.setPresentStatus();

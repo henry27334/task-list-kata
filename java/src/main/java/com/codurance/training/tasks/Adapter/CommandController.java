@@ -9,7 +9,7 @@ import com.codurance.training.tasks.Adapter.Controller.ShowErrorController;
 import com.codurance.training.tasks.Adapter.Controller.ShowHelpController;
 import com.codurance.training.tasks.Adapter.Controller.ShowProjectController;
 import com.codurance.training.tasks.Adapter.Controller.UncheckController;
-import com.codurance.training.tasks.IO.ConsolePresenter;
+import com.codurance.training.tasks.IO.MessagePresenter;
 import com.codurance.training.tasks.UseCase.UseCaseInteractor.AddProject;
 import com.codurance.training.tasks.UseCase.UseCaseInteractor.AddTask;
 import com.codurance.training.tasks.UseCase.UseCaseInteractor.CheckTask;
@@ -20,7 +20,7 @@ import com.codurance.training.tasks.UseCase.UseCaseInteractor.UncheckTask;
 
 public class CommandController {
 
-    public ConsolePresenter execute(String commandLine) {
+    public MessagePresenter execute(String commandLine) {
         String[] commandRest = commandLine.split(" ", 2);
         String command = commandRest[0];
         BaseController selectedAction;
@@ -61,7 +61,7 @@ public class CommandController {
 
         }
         
-        ConsolePresenter consolePresenter = selectedAction.execute(commandLine);
+        MessagePresenter consolePresenter = selectedAction.execute(commandLine);
         
         return consolePresenter;
     }    

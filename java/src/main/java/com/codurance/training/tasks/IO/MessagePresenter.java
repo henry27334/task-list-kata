@@ -1,10 +1,10 @@
 package com.codurance.training.tasks.IO;
 
-public class ConsolePresenter {
+public class MessagePresenter {
     private boolean isPresent = false;
     private String message;
 
-    public ConsolePresenter(String message) {
+    public MessagePresenter(String message) {
         this.message = message;
     }
 

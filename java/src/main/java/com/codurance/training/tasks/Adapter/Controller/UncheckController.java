@@ -1,6 +1,6 @@
 package com.codurance.training.tasks.Adapter.Controller;
 
-import com.codurance.training.tasks.IO.ConsolePresenter;
+import com.codurance.training.tasks.IO.MessagePresenter;
 import com.codurance.training.tasks.UseCase.InputBoundary.UncheckTaskInputBoundary;
 import com.codurance.training.tasks.UseCase.OutputBoundary.UncheckTaskOutputBoundary;
 import com.codurance.training.tasks.UseCase.UseCaseInteractor.UncheckTask;
@@ -14,7 +14,7 @@ public class UncheckController implements BaseController{
     }
 
     @Override
-    public ConsolePresenter execute(String command) {
+    public MessagePresenter execute(String command) {
         String[] subcommandRest = command.split(" ", 3);
         String subcommand = subcommandRest[1];
 
@@ -22,7 +22,7 @@ public class UncheckController implements BaseController{
         uncheckTaskInput.setId(Integer.parseInt(subcommand));
         UncheckTaskOutputBoundary uncheckTaskOutput = uncheckTask.execute(uncheckTaskInput);
 
-        ConsolePresenter consolePresenter = new ConsolePresenter(uncheckTaskOutput.getMessage());
+        MessagePresenter consolePresenter = new MessagePresenter(uncheckTaskOutput.getMessage());
         
         if(consolePresenter.getMessage() != null){
             consolePresenter.setPresentStatus();
