@@ -1,15 +1,14 @@
-package com.codurance.training.tasks.UseCase.Output;
+package com.codurance.training.tasks.UseCase.OutputBoundary;
 
-public class AddProjectOutput implements UseCaseOutput{
+public class UncheckTaskOutputBoundary implements UseCaseOutputBoundary {
+
     private String message;
-
-    public AddProjectOutput() {}
 
     @Override
     public String getOutput() {
-        return getMessage();
+        return message;
     }
-
+    
     public String getMessage() {
         return message;
     }
@@ -17,5 +16,4 @@ public class AddProjectOutput implements UseCaseOutput{
     public void setMessage(String message) {
         this.message = message;
     }
-
 }

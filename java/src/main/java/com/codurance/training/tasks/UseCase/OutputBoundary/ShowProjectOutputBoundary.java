@@ -1,6 +1,6 @@
-package com.codurance.training.tasks.UseCase.Output;
+package com.codurance.training.tasks.UseCase.OutputBoundary;
 
-public class UncheckTaskOutput implements UseCaseOutput {
+public class ShowProjectOutputBoundary implements UseCaseOutputBoundary {
 
     private String message;
 

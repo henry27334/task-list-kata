@@ -3,8 +3,8 @@ package com.codurance.training.tasks.Adapter.Controller;
 
 import com.codurance.training.tasks.Presenter.ConsolePresenter;
 import com.codurance.training.tasks.UseCase.CheckTask.CheckTask;
-import com.codurance.training.tasks.UseCase.Input.CheckTaskInput;
-import com.codurance.training.tasks.UseCase.Output.CheckTaskOutput;
+import com.codurance.training.tasks.UseCase.InputBoundary.CheckTaskInputBoundary;
+import com.codurance.training.tasks.UseCase.OutputBoundary.CheckTaskOutputBoundary;
 
 
 public class CheckController implements BaseController {
@@ -20,9 +20,9 @@ public class CheckController implements BaseController {
         String[] subcommandRest = command.split(" ", 3);
         String subcommand = subcommandRest[1];
 
-        CheckTaskInput checkTaskInput = new CheckTaskInput();
+        CheckTaskInputBoundary checkTaskInput = new CheckTaskInputBoundary();
         checkTaskInput.setId(Integer.parseInt(subcommand));
-        CheckTaskOutput checkTaskOutput = checkTask.execute(checkTaskInput);
+        CheckTaskOutputBoundary checkTaskOutput = checkTask.execute(checkTaskInput);
 
         ConsolePresenter consolePresenter = new ConsolePresenter(checkTaskOutput.getMessage());
         

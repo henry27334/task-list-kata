@@ -1,13 +1,14 @@
-package com.codurance.training.tasks.UseCase.Output;
+package com.codurance.training.tasks.UseCase.OutputBoundary;
 
-public class ShowHelpOutput implements UseCaseOutput {
+public class ShowErrorOutputBoundary implements UseCaseOutputBoundary {
+
     private String message;
-
+    
     @Override
     public String getOutput() {
         return message;
     }
-    
+
     public String getMessage() {
         return message;
     }

@@ -7,13 +7,13 @@ import com.codurance.training.tasks.Entity.Project;
 import com.codurance.training.tasks.Entity.Projects;
 import com.codurance.training.tasks.Entity.Task;
 import com.codurance.training.tasks.UseCase.UseCaseInterface;
-import com.codurance.training.tasks.UseCase.Input.AddTaskInput;
-import com.codurance.training.tasks.UseCase.Output.AddTaskOutput;
+import com.codurance.training.tasks.UseCase.InputBoundary.AddTaskInputBoundary;
+import com.codurance.training.tasks.UseCase.OutputBoundary.AddTaskOutputBoundary;
 
-public class AddTask implements UseCaseInterface<AddTaskInput, AddTaskOutput>{
+public class AddTask implements UseCaseInterface<AddTaskInputBoundary, AddTaskOutputBoundary>{
 
     @Override
-    public AddTaskOutput execute(AddTaskInput input) {
+    public AddTaskOutputBoundary execute(AddTaskInputBoundary input) {
 
         String message = null;
         Projects projects = Projects.getProjectList();
@@ -40,7 +40,7 @@ public class AddTask implements UseCaseInterface<AddTaskInput, AddTaskOutput>{
         Task newTask = new Task(lastId, input.getDescription(), input.getCheck());
         projectTasks.getTasks().add(newTask);
 
-        AddTaskOutput addTaskOutput = new AddTaskOutput();
+        AddTaskOutputBoundary addTaskOutput = new AddTaskOutputBoundary();
         addTaskOutput.setMessage(message);
 
         return addTaskOutput;

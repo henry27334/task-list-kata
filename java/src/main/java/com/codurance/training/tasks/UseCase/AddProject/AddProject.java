@@ -5,20 +5,20 @@ import java.util.List;
 import com.codurance.training.tasks.Entity.Project;
 import com.codurance.training.tasks.Entity.Projects;
 import com.codurance.training.tasks.UseCase.UseCaseInterface;
-import com.codurance.training.tasks.UseCase.Input.AddProjectInput;
-import com.codurance.training.tasks.UseCase.Output.AddProjectOutput;
+import com.codurance.training.tasks.UseCase.InputBoundary.AddProjectInputBoundary;
+import com.codurance.training.tasks.UseCase.OutputBoundary.AddProjectOutputBoundary;
 
-public class AddProject implements UseCaseInterface<AddProjectInput, AddProjectOutput>{
+public class AddProject implements UseCaseInterface<AddProjectInputBoundary, AddProjectOutputBoundary>{
 
     @Override
-    public AddProjectOutput execute(AddProjectInput input) {
+    public AddProjectOutputBoundary execute(AddProjectInputBoundary input) {
 
         Project project = new Project(input.getProjectName());
         Projects projects = Projects.getProjectList();
         List<Project> allProjects = projects.getProjects();
         allProjects.add(project);
 
-        AddProjectOutput addProjectOutput = new AddProjectOutput();
+        AddProjectOutputBoundary addProjectOutput = new AddProjectOutputBoundary();
 
         return addProjectOutput;
     }

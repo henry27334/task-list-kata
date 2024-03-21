@@ -1,13 +1,13 @@
 package com.codurance.training.tasks.UseCase.ShowHelp;
 
 import com.codurance.training.tasks.UseCase.UseCaseInterface;
-import com.codurance.training.tasks.UseCase.Input.ShowHelpInput;
-import com.codurance.training.tasks.UseCase.Output.ShowHelpOutput;
+import com.codurance.training.tasks.UseCase.InputBoundary.ShowHelpInputBoundary;
+import com.codurance.training.tasks.UseCase.OutputBoundary.ShowHelpOutputBoundary;
 
-public class ShowHelp implements UseCaseInterface<ShowHelpInput, ShowHelpOutput> {
+public class ShowHelp implements UseCaseInterface<ShowHelpInputBoundary, ShowHelpOutputBoundary> {
 
     @Override
-    public ShowHelpOutput execute(ShowHelpInput input) {
+    public ShowHelpOutputBoundary execute(ShowHelpInputBoundary input) {
         String message = "Commands:" + "\n" + 
                          "  show" + "\n" +
                          "  add project <project name>" + "\n" +
@@ -15,7 +15,7 @@ public class ShowHelp implements UseCaseInterface<ShowHelpInput, ShowHelpOutput>
                          "  check <task ID>" + "\n" +
                          "  uncheck <task ID>" + "\n";
 
-        ShowHelpOutput helpOutput = new ShowHelpOutput();
+        ShowHelpOutputBoundary helpOutput = new ShowHelpOutputBoundary();
         helpOutput.setMessage(message);
         return helpOutput;
     }

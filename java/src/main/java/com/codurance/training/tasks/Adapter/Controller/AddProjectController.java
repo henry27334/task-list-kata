@@ -2,8 +2,8 @@ package com.codurance.training.tasks.Adapter.Controller;
 
 import com.codurance.training.tasks.Presenter.ConsolePresenter;
 import com.codurance.training.tasks.UseCase.AddProject.AddProject;
-import com.codurance.training.tasks.UseCase.Input.AddProjectInput;
-import com.codurance.training.tasks.UseCase.Output.AddProjectOutput;
+import com.codurance.training.tasks.UseCase.InputBoundary.AddProjectInputBoundary;
+import com.codurance.training.tasks.UseCase.OutputBoundary.AddProjectOutputBoundary;
 
 public class AddProjectController implements BaseController {
     private AddProject addProject;
@@ -17,9 +17,9 @@ public class AddProjectController implements BaseController {
 
         String[] subcommandRest = command.split(" ", 3);
 
-        AddProjectInput addProjectInput = new AddProjectInput();
+        AddProjectInputBoundary addProjectInput = new AddProjectInputBoundary();
         addProjectInput.setProjectName(subcommandRest[2]);
-        AddProjectOutput addProjectOutput = addProject.execute(addProjectInput);
+        AddProjectOutputBoundary addProjectOutput = addProject.execute(addProjectInput);
         
         ConsolePresenter consolePresenter = new ConsolePresenter(addProjectOutput.getMessage());
         

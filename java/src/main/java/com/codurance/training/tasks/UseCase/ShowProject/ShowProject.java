@@ -6,13 +6,13 @@ import com.codurance.training.tasks.Entity.Project;
 import com.codurance.training.tasks.Entity.Projects;
 import com.codurance.training.tasks.Entity.Task;
 import com.codurance.training.tasks.UseCase.UseCaseInterface;
-import com.codurance.training.tasks.UseCase.Input.ShowProjectInput;
-import com.codurance.training.tasks.UseCase.Output.ShowProjectOutput;
+import com.codurance.training.tasks.UseCase.InputBoundary.ShowProjectInputBoundary;
+import com.codurance.training.tasks.UseCase.OutputBoundary.ShowProjectOutputBoundary;
 
-public class ShowProject implements UseCaseInterface<ShowProjectInput, ShowProjectOutput>{
+public class ShowProject implements UseCaseInterface<ShowProjectInputBoundary, ShowProjectOutputBoundary>{
 
     @Override
-    public ShowProjectOutput execute(ShowProjectInput input) {
+    public ShowProjectOutputBoundary execute(ShowProjectInputBoundary input) {
 
         Projects projects = Projects.getProjectList();
         List<Project> allProject = projects.getProjects();
@@ -35,7 +35,7 @@ public class ShowProject implements UseCaseInterface<ShowProjectInput, ShowProje
             message += "\n";
         } 
 
-        ShowProjectOutput showProjectOutput = new ShowProjectOutput();
+        ShowProjectOutputBoundary showProjectOutput = new ShowProjectOutputBoundary();
         showProjectOutput.setMessage(message);
 
         return showProjectOutput;

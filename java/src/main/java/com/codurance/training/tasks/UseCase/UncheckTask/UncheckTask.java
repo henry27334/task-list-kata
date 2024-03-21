@@ -6,20 +6,20 @@ import com.codurance.training.tasks.Entity.Project;
 import com.codurance.training.tasks.Entity.Projects;
 import com.codurance.training.tasks.Entity.Task;
 import com.codurance.training.tasks.UseCase.UseCaseInterface;
-import com.codurance.training.tasks.UseCase.Input.UncheckTaskInput;
-import com.codurance.training.tasks.UseCase.Output.UncheckTaskOutput;
+import com.codurance.training.tasks.UseCase.InputBoundary.UncheckTaskInputBoundary;
+import com.codurance.training.tasks.UseCase.OutputBoundary.UncheckTaskOutputBoundary;
 
-public class UncheckTask implements UseCaseInterface<UncheckTaskInput, UncheckTaskOutput> {
+public class UncheckTask implements UseCaseInterface<UncheckTaskInputBoundary, UncheckTaskOutputBoundary> {
 
 
     @Override
-    public UncheckTaskOutput execute(UncheckTaskInput input) {
+    public UncheckTaskOutputBoundary execute(UncheckTaskInputBoundary input) {
         
         Projects projectList = Projects.getProjectList();
         List<Project> projects = projectList.getProjects();
         String message = setDone(projects, input.getId(), false);
 
-        UncheckTaskOutput uncheckTaskOutput = new UncheckTaskOutput();
+        UncheckTaskOutputBoundary uncheckTaskOutput = new UncheckTaskOutputBoundary();
         uncheckTaskOutput.setMessage(message);
         
         return uncheckTaskOutput;

@@ -1,8 +1,8 @@
-package com.codurance.training.tasks.UseCase.Input;
+package com.codurance.training.tasks.UseCase.InputBoundary;
 
 import com.codurance.training.tasks.Entity.ValueObject.ProjectName;
 
-public class AddProjectInput implements UseCaseInput{
+public class AddProjectInputBoundary implements UseCaseInputBoundary{
 
     private ProjectName projectName;
 

@@ -1,6 +1,6 @@
-package com.codurance.training.tasks.UseCase.Input;
+package com.codurance.training.tasks.UseCase.InputBoundary;
 
-public class ShowErrorInput implements UseCaseInput {
+public class ShowErrorInputBoundary implements UseCaseInputBoundary {
     private String message;
 
     public String getMessage() {

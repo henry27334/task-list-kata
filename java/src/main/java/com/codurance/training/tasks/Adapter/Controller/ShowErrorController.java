@@ -2,22 +2,22 @@ package com.codurance.training.tasks.Adapter.Controller;
 
 import com.codurance.training.tasks.Presenter.ConsolePresenter;
 import com.codurance.training.tasks.UseCase.UseCaseInterface;
-import com.codurance.training.tasks.UseCase.Input.ShowErrorInput;
-import com.codurance.training.tasks.UseCase.Output.ShowErrorOutput;
-import com.codurance.training.tasks.UseCase.Output.UseCaseOutput;
+import com.codurance.training.tasks.UseCase.InputBoundary.ShowErrorInputBoundary;
+import com.codurance.training.tasks.UseCase.OutputBoundary.ShowErrorOutputBoundary;
+import com.codurance.training.tasks.UseCase.OutputBoundary.UseCaseOutputBoundary;
 
 public class ShowErrorController implements BaseController {
-    private UseCaseInterface<ShowErrorInput, ShowErrorOutput> showError;
+    private UseCaseInterface<ShowErrorInputBoundary, ShowErrorOutputBoundary> showError;
     
-    public ShowErrorController(UseCaseInterface<ShowErrorInput, ShowErrorOutput> showError){
+    public ShowErrorController(UseCaseInterface<ShowErrorInputBoundary, ShowErrorOutputBoundary> showError){
         this.showError = showError;
     }
 
     @Override
     public ConsolePresenter execute(String command) {
-        ShowErrorInput showErrorInput = new ShowErrorInput();
+        ShowErrorInputBoundary showErrorInput = new ShowErrorInputBoundary();
         showErrorInput.setMessage(command);
-        UseCaseOutput showErrorOutput = showError.execute(showErrorInput);
+        UseCaseOutputBoundary showErrorOutput = showError.execute(showErrorInput);
 
         ConsolePresenter consolePresenter = new ConsolePresenter(showErrorOutput.getOutput());
         consolePresenter.setPresentStatus();

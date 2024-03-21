@@ -1,12 +1,13 @@
-package com.codurance.training.tasks.UseCase.Output;
+package com.codurance.training.tasks.UseCase.OutputBoundary;
 
-public class ShowErrorOutput implements UseCaseOutput {
-
+public class AddProjectOutputBoundary implements UseCaseOutputBoundary{
     private String message;
-    
+
+    public AddProjectOutputBoundary() {}
+
     @Override
     public String getOutput() {
-        return message;
+        return getMessage();
     }
 
     public String getMessage() {
@@ -16,4 +17,5 @@ public class ShowErrorOutput implements UseCaseOutput {
     public void setMessage(String message) {
         this.message = message;
     }
+
 }

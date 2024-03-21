@@ -1,11 +1,11 @@
-package com.codurance.training.tasks.UseCase.Output;
+package com.codurance.training.tasks.UseCase.OutputBoundary;
 
-public class AddTaskOutput implements UseCaseOutput{
+public class AddTaskOutputBoundary implements UseCaseOutputBoundary{
 
     private long taskId;
     private String message;
 
-    public AddTaskOutput() {}
+    public AddTaskOutputBoundary() {}
 
     @Override
     public String getOutput() {

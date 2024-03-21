@@ -1,7 +1,6 @@
-package com.codurance.training.tasks.UseCase.Output;
+package com.codurance.training.tasks.UseCase.OutputBoundary;
 
-public class ShowProjectOutput implements UseCaseOutput {
-
+public class ShowHelpOutputBoundary implements UseCaseOutputBoundary {
     private String message;
 
     @Override
