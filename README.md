@@ -1,3 +1,9 @@
+# Homework5: Refactor
+1. 新增ValueObject: TaskId, TaskListId
+2. 使用Proxy Pattern為Entity創建ReadOnlyEntity，防止外部改變Entity
+3. 以TaskList作為Aggregate root，所有針對Entity的操作都需要通過該root
+2. 對所有不是透過Aggregate root的操作進行refactor
+
 # Homework4: Refactor
 1. 將外層的Prsenter修正為IO
 2. 將Projects改名為TaskList

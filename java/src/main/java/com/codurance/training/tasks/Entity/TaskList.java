@@ -1,17 +1,21 @@
 package com.codurance.training.tasks.Entity;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
+import com.codurance.training.tasks.Entity.ReadOnlyEntity.ReadOnlyProject;
 import com.codurance.training.tasks.Entity.ValueObject.ProjectName;
+import com.codurance.training.tasks.Entity.ValueObject.TaskId;
+import com.codurance.training.tasks.Entity.ValueObject.TaskListId;
 
 public class TaskList {
+    private TaskListId taskListId;
     private static TaskList projectList = null;
     private final List<Project> projects;
 
     private TaskList() {
+        this.taskListId = TaskListId.of("1");
         this.projects = new ArrayList<>();
     }
 
@@ -23,8 +27,8 @@ public class TaskList {
         return projectList;
     }
 
-    public List<Project> getProjects() {
-        return Collections.unmodifiableList(projects);
+    public TaskListId getId(){
+        return taskListId;
     }
 
     public void addProject(ProjectName name) {
@@ -32,24 +36,41 @@ public class TaskList {
         this.projects.add(project);
     }
 
+    public void addTask(ProjectName name, TaskId id, String description, boolean isCheck){
+        Optional<Project> project =
+            projects.stream()
+                    .filter(pp -> pp.getProjectName().equals(name))
+                    .findFirst();
+
+        project.get().addTask(id, description, isCheck);
+    }
+
     public Project getProject(ProjectName projectName) {
-        Optional<Project> p =
+        Optional<Project> project =
          projects.stream()
-                .filter(project -> project.getProjectName().equals(projectName))
+                .map(p -> (Project) new ReadOnlyProject(p.getProjectName(), p.getTasks()))
+                .filter(pp -> pp.getProjectName().equals(projectName))
                 .findFirst();
 
-        if(p.isEmpty()){
+        if(project.isEmpty()){
             return null;
         }
 
-        return p.get();
+        return project.get();
     }
 
-    public Boolean setDone(long id, boolean done) {
+    public List<Project> getProjects() {
+        return projects
+                .stream()
+                .map(p -> (Project) new ReadOnlyProject(p.getProjectName(), p.getTasks()))
+                .toList();
+    }
+
+    public Boolean setTaskDone(TaskId id, boolean done) {
         Optional<Task> task =
             projects.stream()
             .flatMap(p -> p.getTasks().stream())
-            .filter(t -> t.getId() == id)
+            .filter(t -> t.getId().equals(id))
             .findFirst();
 
         if (task.isEmpty()) {
@@ -59,6 +80,5 @@ public class TaskList {
         task.get().setDone(done);
 
         return true;
-
     }
 }

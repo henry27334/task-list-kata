@@ -19,7 +19,7 @@ public class UncheckController implements BaseController{
         String subcommand = subcommandRest[1];
 
         UncheckTaskInputBoundary uncheckTaskInput = new UncheckTaskInputBoundary();
-        uncheckTaskInput.setId(Integer.parseInt(subcommand));
+        uncheckTaskInput.setId(subcommand);
         UncheckTaskOutputBoundary uncheckTaskOutput = uncheckTask.execute(uncheckTaskInput);
 
         MessagePresenter consolePresenter = new MessagePresenter(uncheckTaskOutput.getMessage());

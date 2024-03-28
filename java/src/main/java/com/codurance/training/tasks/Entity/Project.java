@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Optional;
 
 import com.codurance.training.tasks.Entity.ValueObject.ProjectName;
+import com.codurance.training.tasks.Entity.ValueObject.TaskId;
 
 public class Project {  
     private ProjectName projectName; 
@@ -19,7 +20,7 @@ public class Project {
         return projectName;
     }
     
-    public void addTask(long id, String description, boolean isCheck) {
+    public void addTask(TaskId id, String description, boolean isCheck) {
         Task task = new Task(id, description, isCheck);
         tasks.add(task);
     }
@@ -28,8 +29,8 @@ public class Project {
         return Collections.unmodifiableList(tasks);
     }
 
-    public Task getTask(long id) {
-        Optional<Task> task = tasks.stream().filter(t -> t.getId() == id).findFirst();
+    public Task getTask(TaskId id) {
+        Optional<Task> task = tasks.stream().filter(t -> t.getId().equals(id)).findFirst();
         
         if(task.isEmpty()) {
             return null;

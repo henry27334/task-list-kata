@@ -28,7 +28,7 @@ public class ShowProject implements UseCaseInterface<ShowProjectInputBoundary, S
             message += System.lineSeparator();
             
             for (Task task : project.getTasks()) {
-                message += String.format("    [%c] %d: %s%n", (task.isDone() ? 'x' : ' '), task.getId(), task.getDescription());
+                message += String.format("    [%c] %s: %s%n", (task.isDone() ? 'x' : ' '), task.getId(), task.getDescription());
             }
 
             message += System.lineSeparator();
