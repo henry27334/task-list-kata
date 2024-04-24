@@ -1,3 +1,8 @@
+# Refactor
+1. 新增Repository介面與InMemoryRepository實作
+2. 將TaskListApp作為Main Component並放在第四層
+
+
 # Homework5: Refactor
 1. 新增ValueObject: TaskId, TaskListId
 2. 使用Proxy Pattern為Entity創建ReadOnlyEntity，防止外部改變Entity
