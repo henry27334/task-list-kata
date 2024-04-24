@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 import com.codurance.training.tasks.Adapter.CommandController;
+import com.codurance.training.tasks.IO.Repository.ToDoListRepository;
 
 public final class TaskListConsole implements Runnable {
     private static final String QUIT = "quit";
@@ -13,11 +14,14 @@ public final class TaskListConsole implements Runnable {
     private final BufferedReader in;
     private final PrintWriter out;
     private final CommandController commandController;
+    private final ToDoListRepository todoListRepository;
+    
 
-    public TaskListConsole(BufferedReader reader, PrintWriter writer, CommandController commandController) {
+    public TaskListConsole(BufferedReader reader, PrintWriter writer, CommandController commandController, ToDoListRepository todoListRepository) {
         this.in = reader;
         this.out = writer;
         this.commandController = commandController;
+        this.todoListRepository = todoListRepository;
     }
 
     public void run() {
@@ -37,8 +41,8 @@ public final class TaskListConsole implements Runnable {
             MessagePresenter consolePresenter = commandController.execute(command);
             if(consolePresenter.isPresent()){
                 out.print(consolePresenter.getMessage());
-                
             }
+
         }
     }
 

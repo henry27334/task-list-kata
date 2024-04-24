@@ -22,6 +22,7 @@ public class AddTaskController implements BaseController{
         addTaskInput.setProjectName(projectTask[2]);
         addTaskInput.setDescription(projectTask[3]);
         addTaskInput.setCheck(false);
+        addTaskInput.setTaskListId("001");
         
         AddTaskOutputBoundary addTaskOutput = addTask.execute(addTaskInput);
 

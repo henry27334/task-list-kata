@@ -11,7 +11,11 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.codurance.training.tasks.Adapter.CommandController;
+import com.codurance.training.tasks.Entity.TaskList;
+import com.codurance.training.tasks.Entity.ValueObject.TaskListId;
 import com.codurance.training.tasks.IO.TaskListConsole;
+import com.codurance.training.tasks.IO.Repository.ToDoListInMemroyRepository;
+import com.codurance.training.tasks.IO.Repository.ToDoListRepository;
 
 import static java.lang.System.lineSeparator;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -30,9 +34,12 @@ public final class ApplicationTest {
     public ApplicationTest() throws IOException {
         BufferedReader in = new BufferedReader(new InputStreamReader(new PipedInputStream(inStream)));
         PrintWriter out = new PrintWriter(new PipedOutputStream(outStream), true);
-        CommandController commandController = new CommandController();
-        TaskListConsole taskList = new TaskListConsole(in, out, commandController);
-        applicationThread = new Thread(taskList);
+        TaskList taskList = new TaskList(TaskListId.of("001"));
+        ToDoListRepository todoListRepository = new ToDoListInMemroyRepository();
+        todoListRepository.save(taskList);
+        CommandController commandController = new CommandController(todoListRepository);
+        TaskListConsole taskListConsole = new TaskListConsole(in, out, commandController, todoListRepository);
+        applicationThread = new Thread(taskListConsole);
     }
 
     @Before public void

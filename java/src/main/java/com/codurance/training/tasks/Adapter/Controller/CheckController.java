@@ -22,6 +22,7 @@ public class CheckController implements BaseController {
 
         CheckTaskInputBoundary checkTaskInput = new CheckTaskInputBoundary();
         checkTaskInput.setId(subcommand);
+        checkTaskInput.setTaskListId("001");
         CheckTaskOutputBoundary checkTaskOutput = checkTask.execute(checkTaskInput);
 
         MessagePresenter consolePresenter = new MessagePresenter(checkTaskOutput.getMessage());

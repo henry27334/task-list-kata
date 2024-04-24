@@ -11,20 +11,11 @@ import com.codurance.training.tasks.Entity.ValueObject.TaskListId;
 
 public class TaskList {
     private TaskListId taskListId;
-    private static TaskList projectList = null;
     private final List<Project> projects;
 
-    private TaskList() {
-        this.taskListId = TaskListId.of("1");
+    public TaskList(TaskListId id) {
+        this.taskListId = id;
         this.projects = new ArrayList<>();
-    }
-
-    public static TaskList getTaskList() {
-        if (projectList == null) {
-            projectList = new TaskList();
-        } 
-
-        return projectList;
     }
 
     public TaskListId getId(){

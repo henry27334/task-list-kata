@@ -1,5 +1,6 @@
 package com.codurance.training.tasks.Adapter.Controller;
 
+import com.codurance.training.tasks.Entity.ValueObject.TaskListId;
 import com.codurance.training.tasks.IO.MessagePresenter;
 import com.codurance.training.tasks.UseCase.InputBoundary.ShowProjectInputBoundary;
 import com.codurance.training.tasks.UseCase.OutputBoundary.ShowProjectOutputBoundary;
@@ -15,6 +16,8 @@ public class ShowProjectController implements BaseController{
     @Override
     public MessagePresenter execute(String command) {
         ShowProjectInputBoundary showProjectInput = new ShowProjectInputBoundary();
+        showProjectInput.setTaskListId("001");
+        
         ShowProjectOutputBoundary showProjectOutput = showProject.execute(showProjectInput);
 
         String output = showProjectOutput.getMessage();

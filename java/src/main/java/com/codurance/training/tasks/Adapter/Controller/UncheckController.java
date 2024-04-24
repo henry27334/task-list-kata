@@ -20,6 +20,7 @@ public class UncheckController implements BaseController{
 
         UncheckTaskInputBoundary uncheckTaskInput = new UncheckTaskInputBoundary();
         uncheckTaskInput.setId(subcommand);
+        uncheckTaskInput.setTaskListId("001");
         UncheckTaskOutputBoundary uncheckTaskOutput = uncheckTask.execute(uncheckTaskInput);
 
         MessagePresenter consolePresenter = new MessagePresenter(uncheckTaskOutput.getMessage());

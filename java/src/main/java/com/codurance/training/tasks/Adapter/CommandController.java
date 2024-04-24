@@ -10,6 +10,7 @@ import com.codurance.training.tasks.Adapter.Controller.ShowHelpController;
 import com.codurance.training.tasks.Adapter.Controller.ShowProjectController;
 import com.codurance.training.tasks.Adapter.Controller.UncheckController;
 import com.codurance.training.tasks.IO.MessagePresenter;
+import com.codurance.training.tasks.IO.Repository.ToDoListRepository;
 import com.codurance.training.tasks.UseCase.UseCaseInteractor.AddProject;
 import com.codurance.training.tasks.UseCase.UseCaseInteractor.AddTask;
 import com.codurance.training.tasks.UseCase.UseCaseInteractor.CheckTask;
@@ -20,6 +21,12 @@ import com.codurance.training.tasks.UseCase.UseCaseInteractor.UncheckTask;
 
 public class CommandController {
 
+    private final ToDoListRepository todoListRepository;
+
+    public CommandController(ToDoListRepository todoListRepository){
+        this.todoListRepository = todoListRepository;
+    }
+
     public MessagePresenter execute(String commandLine) {
         String[] commandRest = commandLine.split(" ", 2);
         String command = commandRest[0];
@@ -27,7 +34,7 @@ public class CommandController {
     
         switch (command) {
             case "show":
-                ShowProject showProject = new ShowProject();
+                ShowProject showProject = new ShowProject(todoListRepository);
                 selectedAction = new ShowProjectController(showProject);
                 break;
             case "add":
@@ -35,19 +42,19 @@ public class CommandController {
                 String subcommand = subcommandRest[0];
 
                 if (subcommand.equals("project")) {
-                    AddProject addProject = new AddProject();
+                    AddProject addProject = new AddProject(todoListRepository);
                     selectedAction = new AddProjectController(addProject);
                 } else {
-                    AddTask addTask = new AddTask();
+                    AddTask addTask = new AddTask(todoListRepository);
                     selectedAction = new AddTaskController(addTask);                    
                 }
                 break;
             case "check":
-                CheckTask checkTask = new CheckTask();
+                CheckTask checkTask = new CheckTask(todoListRepository);
                 selectedAction = new CheckController(checkTask);
                 break;
             case "uncheck":
-                UncheckTask uncheckTask = new UncheckTask();
+                UncheckTask uncheckTask = new UncheckTask(todoListRepository);
                 selectedAction = new UncheckController(uncheckTask);
                 break;
             case "help":
@@ -58,7 +65,6 @@ public class CommandController {
                 ShowError showError = new ShowError();
                 selectedAction = new ShowErrorController(showError);
                 break;
-
         }
         
         MessagePresenter consolePresenter = selectedAction.execute(commandLine);

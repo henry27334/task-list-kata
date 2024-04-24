@@ -1,13 +1,24 @@
 package com.codurance.training.tasks.UseCase.InputBoundary;
 
 import com.codurance.training.tasks.Entity.ValueObject.ProjectName;
+import com.codurance.training.tasks.Entity.ValueObject.TaskListId;
 
 public class AddTaskInputBoundary implements UseCaseInputBoundary {
+
+    private TaskListId taskListId;
     private long taskId; 
     private ProjectName projectName;
     private String taskDescription;
     private boolean isCheck;
 
+    public TaskListId getTaskListId() {
+        return taskListId;
+    }
+
+    public void setTaskListId(String taskListId) {
+        this.taskListId = TaskListId.of(taskListId);
+    }
+    
     public Long getTaskId() {
         return taskId;
     }

@@ -19,6 +19,7 @@ public class AddProjectController implements BaseController {
 
         AddProjectInputBoundary addProjectInput = new AddProjectInputBoundary();
         addProjectInput.setProjectName(subcommandRest[2]);
+        addProjectInput.setTaskListId("001");
         AddProjectOutputBoundary addProjectOutput = addProject.execute(addProjectInput);
         
         MessagePresenter consolePresenter = new MessagePresenter(addProjectOutput.getMessage());
